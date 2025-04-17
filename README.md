@@ -63,6 +63,7 @@ All rights reserved © 2025.
 ## 🌐 Official Site
 
 [https://quickdigi-official.firebaseapp.com/](https://quickdigi-official.firebaseapp.com/)
+---
 [Contect us](quickdigi0official@outlook.com)
 
 > Built with soul, not just code.
