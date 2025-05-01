@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepAIM - The Smartest Small Brain Ever Built</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --card-bg: #ffffff;
+            --border-color: #dee2e6;
+            --highlight-color: rgba(67, 97, 238, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --primary-color: #4cc9f0;
+            --secondary-color: #4361ee;
+            --accent-color: #3a0ca3;
+            --card-bg: #1e1e1e;
+            --border-color: #333333;
+            --highlight-color: rgba(76, 201, 240, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            margin-left: 0.5rem;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-label {
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 30px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .highlight {
+            background-color: var(--highlight-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 2rem 0;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        h2 i {
+            margin-right: 0.6rem;
+            font-size: 1.5rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.8rem;
+            color: var(--secondary-color);
+        }
+
+        .challenge {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .challenge-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .challenge-header i {
+            margin-right: 0.6rem;
+            font-size: 1.3rem;
+        }
+
+        .quote {
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+            background-color: var(--highlight-color);
+            margin-bottom: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .try-section {
+            text-align: center;
+        }
+
+        .try-section h2 {
+            justify-content: center;
+        }
+
+        .try-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .try-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .team {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .emoji {
+            font-style: normal;
+            margin-right: 0.3rem;
+        }
+
+        code {
+            background-color: var(--highlight-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .animated-brain {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            position: relative;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 15px rgba(76, 201, 240, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(76, 201, 240, 0);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <span>DeepAIM</span>
+            </div>
+            <div class="toggle-container">
+                <span class="toggle-label">Dark Mode</span>
+                <label class="toggle">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </header>
+
+        <div class="hero">
+            <div class="animated-brain">
+                <i class="fas fa-brain" style="font-size: 4rem; color: var(--primary-color);"></i>
+            </div>
+            <h1>🚀 DeepAIM — The Smartest Small Brain Ever Built</h1>
+            <p><strong>Forget everything you know about AI.</strong></p>
+            <p>DeepAIM is here to flip the game 🎮. With just <span class="highlight">403 parameters</span>, it delivers <em>brain-level thinking</em> 🤯 — not through brute force, but through raw logic, memory, and efficiency.</p>
+            <p>Built completely from scratch 🛠️ — no external APIs, no pre-trained bloated models. Just pure code, deep learning magic, and a vision to make something truly <strong>intelligent</strong>.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+            <h2><i class="fas fa-brain"></i> What Makes DeepAIM Different?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Deep Similarity Matching</h3>
+                    <p>Understands your words like a human would</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Multi-Brain Architecture</h3>
+                    <p><code>LinguisticBrain</code>, <code>LogicBrain</code>, and <code>ActionBrain</code> working together</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-memory"></i>
+                    <h3>Memory Layers</h3>
+                    <p><code>STM</code>, <code>LTM</code>, and <code>Episodic</code> memory that actually <em>remembers</em></p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Self-Improving Engine</h3>
+                    <p>Gets smarter every time you talk to it</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="challenge">
+                <div class="challenge-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Core Challenge: Tiny Model, Big Mind</h3>
+                </div>
+                <div class="quote">
+                    <p>DeepAIM runs on only <strong>403 parameters</strong>.</p>
+                    <p>That's smaller than a calculator's firmware...</p>
+                    <p>And yet? It <strong>thinks</strong>, <strong>adapts</strong>, and <strong>responds</strong> like no basic AI ever could.</p>
+                </div>
+                <p>This isn't just AI.<br>
+                This is a fully alive, deeply optimized digital mind.<br>
+                <strong>Smart not because it's big — but because it's designed right.</strong></p>
+            </div>
+        </div>
+
+        <div class="section try-section">
+            <h2><i class="fas fa-globe"></i> Try It. You Won't Believe It.</h2>
+            <p>Whether you're a dev, a curious mind, or someone who just wants to talk to a brainy bot — one message is all it takes to get hooked.</p>
+            
+            <div class="quote">
+                <p><strong>DeepAIM feels like you're chatting with something real.</strong></p>
+                <p>It doesn't guess. It understands.</p>
+            </div>
+            
+            <a href="#" class="try-btn pulse">Chat with DeepAIM</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <footer>
+            <h3>👾 Built With 💙 By</h3>
+            <p>The <span class="team">DeepAIM Team</span> — proudly engineered at <span class="team">QuickDigi</span></p>
+            <p>Powered by logic, passion, and pure Gen Z energy ⚡</p>
+        </footer>
+    </div>
+
+    <script>
+        // Dark mode toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        // Check for saved theme preference or use preferred color scheme
+        const savedTheme = localStorage.getItem('theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        // Apply saved theme on page load
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.checked = true;
+        }
+        
+        // Toggle theme when switch is clicked
+        themeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.feature-card, .challenge, .quote');
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                
+                // If element is in viewport
+                if (position.top < window.innerHeight && position.bottom >= 0) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Set initial styles for animation
+        document.querySelectorAll('.feature-card, .challenge, .quote').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        // Listen for scroll events
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
