@@ -81,6 +81,8 @@ Developed by **Mohamed**, a young Egyptian prodigy crafting one of the first ful
 
 ---
 
-> ⚙️ _“This is not just artificial intelligence... it's Deep Artificial Mind.”_
 > 🔗 _"try now [DeepAIM](https://deepaim.firebaseapp.com)"_
 
+---
+
+> ⚙️ _“This is not just artificial intelligence... it's Deep Artificial Mind.”_
