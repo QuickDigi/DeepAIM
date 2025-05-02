@@ -4,9 +4,9 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/AI-Core--Based-blueviolet?style=flat-square" />
-  <img src="https://img.shields.io/badge/Language-Node.js-green?style=flat-square" />
-  <img src="https://img.shields.io/badge/Status-In%20Development-yellow?style=flat-square" />
+  <img src="https://img.shields.io/badge/AI-Core--Based-blueviolet?style=flat-square" alt="AI-Core--Based-blueviolet" />
+  <img src="https://img.shields.io/badge/Language-Node.js-green?style=flat-square" alt="Language-Node.js-green" />
+  <img src="https://img.shields.io/badge/Status-In%20Development-yellow?style=flat-square" alt="Status-In%20Development-yellow" />
 </p>
 
 ---
