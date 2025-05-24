@@ -70,7 +70,7 @@ DeepAIM is more than a project — it’s a step toward building an AI that **th
 
 ## 👑 Creator
 
-Developed by **Mohamed**, a young Egyptian prodigy crafting one of the first fully self-built AI systems in the region — at just 14 years old.
+Developed by **Mohamed Mostafa Brawh**, a young Egyptian prodigy crafting one of the first fully self-built AI systems in the region — at just 14 years old.
 
 ---
 
