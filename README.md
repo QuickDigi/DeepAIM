@@ -54,7 +54,7 @@
 
 Despite DeepAIM's advanced architecture, it currently has a major limitation:
 
-- **🚧 Low Parameter Count (2M Params)**  
+- **🚧 Low Parameter Count (2M Param)**  
   The core model operates with only **2M parameters**, which restricts its learning capacity and depth of representation. This makes it more reliant on logic-based reasoning and similarity matching, rather than pure statistical learning.
 
 > 📌 Future versions aim to scale this up significantly as the system evolves and more training data becomes available.
